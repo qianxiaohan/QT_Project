@@ -1,0 +1,77 @@
+
+QPushButton#open_dir_btn{
+    border-style:none;
+	border:1px solid #353535;
+	color:#F0F0F0;
+	padding:5px;
+	min-height:20px;
+	border-radius:2px;
+	background-color:#2f69f2;
+	font-size : 16px;
+	font-weight : 500;
+}
+
+QPushButton#open_dir_btn:hover {
+    background-color:#3f75f3
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}
+
+QPushButton#opt_open_btn, #opt_update_btn, #opt_return_btn, #reset_btn {
+	border:1px solid #353535;
+	border-radius:2px;
+	background-color:#fafafb;
+	min-width : 80px;
+	min-height : 25px;
+}
+
+/*QPushButton#change_dir_btn {
+        border : none;
+        border-left : 1px solid #353535;
+        background-color : blue;
+        margin-left : 0px;
+}*/
+
+/*-------QTableView--------*/
+QTableView {
+	alternate-background-color : #fafafb;
+	background-color : #ffffff;
+}
+
+/*QTableView:hover {
+	background-color : #e3e3e8
+}*/
+
+QGroupBox#groupbox {
+	border : 2px dotted #b8b8c6;
+	
+}
+
+QHeaderView::section {
+	font-weight : 500;
+	font-size : 16px;
+	background-color : #f8f8f9;
+	border: 0px solid #6c6c6c;
+	min-height : 30px;
+}
+
+/*--------QLineEdit--------*/
+QLineEdit#outputdir, #updateline{
+	border:1px solid #353535;
+	border-radius:2px;
+        color : #b7b7b7;
+}
+
+/*--------QSpinBox-------*/
+QSpinBox {
+        min-width : 46px;
+}
+
+
+

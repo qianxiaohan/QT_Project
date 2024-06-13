@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/copy_dir.png</file>
+        <file>image/dir.png</file>
+        <file>image/dir_label.png</file>
+        <file>image/dir_label2.png</file>
+        <file>image/reset.png</file>
+        <file>image/window_icon.png</file>
+        <file>style/myqss.css</file>
+        <file>image/logo.ico</file>
+    </qresource>
+</RCC>

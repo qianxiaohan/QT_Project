@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>style/mystyle.css</file>
+        <file>image/openbtn.png</file>
+        <file>image/closebtn.png</file>
+        <file>image/windowicon.png</file>
+        <file>image/logo.ico</file>
+    </qresource>
+</RCC>

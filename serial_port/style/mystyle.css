@@ -1,0 +1,12 @@
+QPushButton{
+    /*border-style:none;
+	border:1px solid #353535;
+	color:#F0F0F0;
+	padding:5px;
+	min-height:20px;
+	border-radius:2px;
+	background-color:#2f69f2;
+	font-size : 16px;
+        font-weight : 500;*/
+        outline : none; /* 去除按钮的焦点框 */
+}

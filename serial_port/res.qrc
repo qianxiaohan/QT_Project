@@ -4,6 +4,9 @@
         <file>image/openbtn.png</file>
         <file>image/closebtn.png</file>
         <file>image/windowicon.png</file>
-        <file>image/logo.ico</file>
+        <file>image/logo.ico</file>	
+    </qresource>
+	<qresource prefix="/qt">
+		<file>etc/qt.conf</file>		
     </qresource>
 </RCC>

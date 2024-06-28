@@ -166,13 +166,15 @@ void SerialPortWidget::createSendGroupBox()
     sendLineCheckBox->setChecked(true); //默认勾选
 
     sendTextEdit = new QTextEdit;
-    sendTextEdit->setFont(QFont("微软雅黑", 10));
+    sendTextEdit->setFont(QFont("微软雅黑", 9));
     sendTextEdit->setReadOnly(true);
     sendButton = new QPushButton("发送");
     sendButton->setFixedHeight(50);
 //    clearSendButton = new QPushButton("清除发送");
     textGroupBox = new QGroupBox("发送多条数据");
     sendGroupBox = new QGroupBox("发送单条数据");
+
+
 
     QGridLayout *gridlayout1 = new QGridLayout;
     QGridLayout *gridlayout2 = new QGridLayout;
@@ -188,7 +190,7 @@ void SerialPortWidget::createSendGroupBox()
         lineEdits[i] = new QLineEdit;
         buttons[i] = new QPushButton(tr("%1").arg(i+1));
         buttons[i]->setFixedWidth(50);
-        lineEdits[i]->setFont(QFont("微软雅黑", 10));
+        lineEdits[i]->setFont(QFont("微软雅黑", 9));
         connect(buttons[i], &QPushButton::clicked, [=]{
             if(serialport->isOpen())
             {

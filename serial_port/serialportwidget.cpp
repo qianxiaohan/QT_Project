@@ -16,7 +16,13 @@
 #include <QJsonDocument>
 #include <QTextCodec>
 #include <QRegExpValidator>
+//#include <QApplication>
+
+#include <windows.h>
+#include <windowsx.h>  //提供消息关键字的识别
+#include <Dbt.h>
 #include "myintvalidator.h"
+#include "myeventfilter.h"
 
 SerialPortWidget::SerialPortWidget(QWidget *parent) : QWidget(parent)
 {
@@ -54,10 +60,26 @@ void SerialPortWidget::setupUI()
     connect(sendButton, &QCheckBox::clicked, this, &SerialPortWidget::onclicked_sendButton);
     times = 0;
     connect(openSerialButton, &QCheckBox::clicked, this, &SerialPortWidget::onclicked_openSerialButton);
+//    connect(serialport, &QSerialPort::close, this, &SerialPortWidget::onclicked_openSerialButton);
     connect(serialport, &QSerialPort::readyRead, this, &SerialPortWidget::readData);
     connect(timerCheckBox, &QCheckBox::stateChanged, this, &SerialPortWidget::stateChanged_timerCheckBox);
     connect(sendTextEdit, &QTextEdit::textChanged, this, &SerialPortWidget::validateHEX);
     connect(sendHEXCheckBox, &QCheckBox::stateChanged, this, &SerialPortWidget::stateChanged_sendHEXCheckBox);
+
+    //设置本地事件过滤器
+    MyNativeFilter *nativefilter = new MyNativeFilter;
+    qApp->installNativeEventFilter(nativefilter);
+
+//    connect(nativefilter, &MyNativeFilter::DeviceChanged, this, &SerialPortWidget::slot_DeviceChanged);
+    connect(nativefilter, &MyNativeFilter::DeviceChanged, [=]{
+        if(serialport->isOpen())
+            serialport->close();
+        //获取串口信息
+        QList<QSerialPortInfo> infos = QSerialPortInfo::availablePorts();
+        serialPortComboBox->clear();
+        for (const QSerialPortInfo &info : infos)		//foreach遍历串口信息
+            serialPortComboBox->addItem(info.portName());   //获取串口名
+    });
 }
 
 void SerialPortWidget::createRecGroupBox()
@@ -456,7 +478,6 @@ void SerialPortWidget::stateChanged_hexCheckBox(int state)
 
 void SerialPortWidget::onclicked_openSerialButton()
 {
-
     //打开串口
     if(times % 2 == 0)
     {
@@ -604,6 +625,17 @@ void SerialPortWidget::stateChanged_sendHEXCheckBox(int state)
     }
 }
 
+void SerialPortWidget::slot_DeviceChanged()
+{
+    if(serialport->isOpen())
+        serialport->close();
+    //获取串口信息
+    QList<QSerialPortInfo> infos = QSerialPortInfo::availablePorts();
+    serialPortComboBox->clear();
+    for (const QSerialPortInfo &info : infos)		//foreach遍历串口信息
+        serialPortComboBox->addItem(info.portName());   //获取串口名
+}
+
 void SerialPortWidget::validateHEX()
 {
     if(!sendHEXCheckBox->isChecked())
@@ -634,6 +666,7 @@ void SerialPortWidget::validateHEX()
 
     }
 }
+
 
 void SerialPortWidget::showStringwithTime(QString &showString, bool isShow, MODE m)
 {

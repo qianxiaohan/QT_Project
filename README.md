@@ -4,10 +4,10 @@
 
 1. rename：批量重命名
 
-      ![](img/重命名界面1.png)
+      ![rename-1.png](./img/rename-1.png)
 
-      ![重名名界面2.png](img/重命名界面2.png)
+      ![rename-2.png](./img/rename-2.png)
 
 2. serial_port：简易串口助手
 
-      ![串口助手界面.png](img/简易串口助手界面.png)
+      ![serial-port.png](./img/serial-port.png)
